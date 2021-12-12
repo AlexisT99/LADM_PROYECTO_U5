@@ -11,6 +11,7 @@ import android.view.Menu
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
@@ -96,6 +97,15 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
             intent.putExtra("Lugar", datoActualg)
             startActivity(intent)
         }
+        b.btnInfo.setOnClickListener {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Nosotros")
+            builder.setMessage("Trabajo Realizado por:\n Alexis Torres Acosta\n Keiry Yoseli Rodriguez Gonzalez\n Fernando Miramontes Alvarez \n Luis Daniel Mendez Castellanos ")
+            builder.setPositiveButton("OK"){ d,w->
+                d.dismiss()
+            }
+            builder.show()
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -158,7 +168,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
         return 0
     }
-    
+
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
